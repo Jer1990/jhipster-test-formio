@@ -11,6 +11,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "allowedCommonJsDependencies": ["lodash", "formiojs"],
             "customWebpackConfig": {
               "path": "./webpack/webpack.custom.js"
             },

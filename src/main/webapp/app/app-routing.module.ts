@@ -6,6 +6,7 @@ import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 import { Authority } from 'app/config/authority.constants';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
+import { BuilderComponent } from './builder/builder.component';
 
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
@@ -28,6 +29,14 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
         {
           path: 'login',
           loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+        },
+        {
+          path: 'builder',
+          component: BuilderComponent,
+        },
+        {
+          path: 'manage',
+          loadChildren: () => import('./manager-form/form.module').then(m => m.FormModule),
         },
         ...LAYOUT_ROUTES,
       ],
