@@ -38,6 +38,11 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
           path: 'manage',
           loadChildren: () => import('./manager-form/form.module').then(m => m.FormModule),
         },
+        {
+          path: 'auth',
+          loadChildren: () => import('./auth-formio/auth-formio.module').then(m => m.AuthFormioModule),
+        },
+
         ...LAYOUT_ROUTES,
       ],
       { enableTracing: DEBUG_INFO_ENABLED }

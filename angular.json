@@ -11,7 +11,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "allowedCommonJsDependencies": ["lodash", "formiojs"],
+            "allowedCommonJsDependencies": ["lodash", "formiojs", "native-promise-only"],
             "customWebpackConfig": {
               "path": "./webpack/webpack.custom.js"
             },
@@ -20,7 +20,7 @@
             "main": "src/main/webapp/main.ts",
             "polyfills": "src/main/webapp/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
               "src/main/webapp/content",
               "src/main/webapp/favicon.ico",

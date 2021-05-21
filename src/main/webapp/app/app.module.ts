@@ -29,7 +29,11 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { BuilderComponent } from './builder/builder.component';
-import { FormioModule } from 'angular-formio';
+import { FormioModule, FormioAppConfig } from 'angular-formio';
+import { FormModule } from './manager-form/form.module';
+import { AppConfig } from './config';
+import { FormioResources } from 'angular-formio/resource';
+import { FormioAuthService, FormioAuthConfig } from 'angular-formio/auth';
 
 @NgModule({
   imports: [
@@ -37,6 +41,7 @@ import { FormioModule } from 'angular-formio';
     SharedModule,
     FormioModule,
     HomeModule,
+    FormModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     EntityRoutingModule,
     AppRoutingModule,
@@ -58,8 +63,22 @@ import { FormioModule } from 'angular-formio';
   ],
   providers: [
     Title,
+    FormioResources,
+    FormioAuthService,
+    { provide: FormioAppConfig, useValue: AppConfig },
     { provide: LOCALE_ID, useValue: 'en' },
     { provide: NgbDateAdapter, useClass: NgbDateDayjsAdapter },
+    {
+      provide: FormioAuthConfig,
+      useValue: {
+        login: {
+          form: 'user/login',
+        },
+        register: {
+          form: 'user/register',
+        },
+      },
+    },
     httpInterceptorProviders,
   ],
   declarations: [
